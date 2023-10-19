@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-namespace LearningCenter2.API.Shared.Extensions;
+namespace LoyalSips.API.Shared.Extensions;
 public static class ModelBuilderExtensions
 {
     //permite configurar una convencion de nomenclatura en snake_case para todas las tablas, columnas, llaves de la base de datos

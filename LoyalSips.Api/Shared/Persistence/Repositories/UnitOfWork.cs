@@ -1,7 +1,8 @@
-using LearningCenter2.API.Learning.Domain.Repositories;
-using LearningCenter2.API.Shared.Persistence.Contexts;
 
-namespace LearningCenter2.API.Shared.Persistence.Repositories;
+using LoyalSips.Api.LoyalSips.Domain.Repositories;
+using LoyalSips.Api.Shared.Persistence.Contexts;
+
+namespace LoyalSips.API.Shared.Persistence.Repositories;
 //patron de unidad de trabajo
 public class UnitOfWork : IUnitOfWork
 {

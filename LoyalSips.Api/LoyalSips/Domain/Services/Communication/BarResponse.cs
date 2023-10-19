@@ -1,6 +1,15 @@
-namespace LoyalSips.Api.LoyalSips.Domain.Services.Communucation.Communucation;
+using LoyalSips.Api.LoyalSips.Domain.Models;
+using LoyalSips.API.Shared.Domain.Services.Communication;
 
-public class BarResponse
+namespace LoyalSips.Api.LoyalSips.Domain.Services.Communication;
+
+public class BarResponse : BaseResponse<Bar>
 {
-    
+    public BarResponse(string message) : base(message)
+    {
+    }
+
+    public BarResponse(Bar resource) : base(resource)
+    {
+    }
 }

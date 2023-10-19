@@ -1,4 +1,4 @@
-namespace LearningCenter2.API.Shared.Domain.Services.Communication;
+namespace LoyalSips.API.Shared.Domain.Services.Communication;
 
 public abstract class BaseResponse<T>
 {

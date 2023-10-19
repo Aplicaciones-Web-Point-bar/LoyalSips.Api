@@ -1,4 +1,4 @@
-namespace LearningCenter2.API.Shared.Extensions;
+namespace LoyalSips.API.Shared.Extensions;
 
 public static class StringExtensions
 {

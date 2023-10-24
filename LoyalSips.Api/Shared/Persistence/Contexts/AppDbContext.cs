@@ -36,6 +36,16 @@ public class AppDbContext: DbContext
         builder.Entity<Bar>().Property(p => p.Name).IsRequired().HasMaxLength(30);
         builder.Entity<Bar>().Property(p => p.Description).IsRequired().HasMaxLength(200);
         builder.Entity<Bar>().Property(p => p.Logo).IsRequired().HasMaxLength(700);
+
+        builder.Entity<Bar>().Property(p => p.Fotos)
+            .HasConversion(v => string.Join(',', v), // Convertir la lista de cadenas a una sola cadena
+            v => v.Split(',', StringSplitOptions.RemoveEmptyEntries)
+                .ToList() // Convertir la cadena a una lista de cadenas
+        ).HasMaxLength(1400);;
+       
+        
+        builder.Entity<Bar>().Property(p => p.Puntaje).IsRequired();
+        builder.Entity<Bar>().Property(p => p.Ubicacion).IsRequired().HasMaxLength(700);;
         
         
         builder.UseSnakeCaseNamingConvention();

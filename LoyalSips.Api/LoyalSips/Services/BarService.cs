@@ -66,12 +66,14 @@ public class BarService : IBarService
         existingBar.Name = bar.Name;
         existingBar.Description = bar.Description;
         existingBar.Logo = bar.Logo;
+        existingBar.Fotos = bar.Fotos;
+        existingBar.Puntaje = bar.Puntaje;
+        existingBar.Ubicacion = bar.Ubicacion;
         try
         {
             _barRepository.Update(existingBar);
             await _unitOfWork.CompleteAsync();
             return new BarResponse(existingBar);
-
         }
         catch (Exception e)
         {

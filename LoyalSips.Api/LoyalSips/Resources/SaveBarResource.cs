@@ -17,5 +17,15 @@ public class SaveBarResource
     public string Logo { get; set; }
     
     [Required]
+    public List<string> Fotos { get; set; }
+    
+    [Required]
+    public int Puntaje { get; set; }
+    
+    [Required]
+    [MaxLength(200)]
+    public string Ubicacion { get; set; }
+    
+    [Required]
     public int OwnerId { get; set; }
 }

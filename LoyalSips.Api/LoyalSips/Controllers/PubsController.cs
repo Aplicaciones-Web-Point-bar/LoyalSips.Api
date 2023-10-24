@@ -30,27 +30,23 @@ public class PubsController : ControllerBase
     }
     
     [HttpPost]
-    public async Task<IActionResult> PostAsync([FromBody] SaveBarResource resource)
+    public async Task<IActionResult> PostAsync([FromBody]
+        SaveBarResource resource)
     {
-        //verifica si los datos recibidos de resource cumplen las reglas.
         if (!ModelState.IsValid)
             return BadRequest(ModelState.GetErrorMessages());
         
-        //mapea el java saveCategoryResource a un objeto CategoryLL
-        var bar = _mapper.Map<SaveBarResource,
+        var tutorial = _mapper.Map<SaveBarResource,
             Bar>(resource);
         
-        //agrega la categoria mediante en categoryService, si falla da el mensaje de estado, o en que se incumplio
-        var result = await _barService.SaveAsync(bar);
+        var result = await _barService.SaveAsync(tutorial);
         if (!result.Success)
             return BadRequest(result.Message);
         
-        //mapea el objeto CategoryLL a el json CategoryResource
-        var barResource = _mapper.Map<Bar,
+        var tutorialResource = _mapper.Map<Bar,
             BarResource>(result.Resource);
         
-        //muestra la respuesta de OK(200) y la categoria creada en JSON
-        return Ok(barResource);
+        return Ok(tutorialResource);
     }
     [HttpPut("{id}")]
     public async Task<IActionResult> PutAsync(int id, [FromBody] SaveBarResource resource)

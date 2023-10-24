@@ -26,11 +26,9 @@ public class BarService : IBarService
     public async Task<BarResponse> SaveAsync(Bar bar)
     {
         // Validate CategoryId
-        var existingUser = await
-            _userRepository.FindByIdAsync(bar.OwnerId);
+        var existingUser = await _userRepository.FindByIdAsync(bar.OwnerId);
         if (existingUser == null)
-            return new BarResponse("Invalid Owner");
-        
+            return new BarResponse($"Invalid Owner 2{bar.OwnerId}" );
         try
         {
             // Add bar

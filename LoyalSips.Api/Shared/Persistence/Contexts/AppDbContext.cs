@@ -27,6 +27,7 @@ public class AppDbContext: DbContext
         builder.Entity<User>().Property(p => p.Password).IsRequired().HasMaxLength(30);
         
         //FK
+    
         
         
         builder.Entity<Bar>().ToTable("Pubs");

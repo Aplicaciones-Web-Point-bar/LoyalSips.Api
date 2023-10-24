@@ -17,5 +17,5 @@ public class SaveBarResource
     public string Logo { get; set; }
     
     [Required]
-    public int UserId { get; set; }
+    public int OwnerId { get; set; }
 }

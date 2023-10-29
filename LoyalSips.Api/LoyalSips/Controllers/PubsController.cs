@@ -28,7 +28,14 @@ public class PubsController : ControllerBase
             IEnumerable<BarResource>>(pubs);
         return resources;
     }
-    
+    [HttpGet("{id}")]
+    public async Task<BarResource> GetAllAsyncId(int id)
+    {
+        var pubs = await _barService.ListByIdAsync(id);
+        var resources = _mapper.Map<Bar,
+            BarResource>(pubs);
+        return resources;
+    }
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody]
         SaveBarResource resource)

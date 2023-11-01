@@ -8,6 +8,8 @@ public class AppDbContext: DbContext
 {
     public DbSet<Bar> Pubs { get; set; }
     public DbSet<User> Users { get; set; }
+    
+    public DbSet<Support> Supports { get; set; }
 
     public AppDbContext(DbContextOptions options) : base(options)
     {
@@ -18,6 +20,7 @@ public class AppDbContext: DbContext
     {
         base.OnModelCreating(builder);
 
+        // Tabla Usuarios o User
         builder.Entity<User>().ToTable("Users");
         builder.Entity<User>().HasKey(p => p.Id);
         builder.Entity<User>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
@@ -30,6 +33,8 @@ public class AppDbContext: DbContext
     
         
         
+        
+        // Tabla Bares o Pubs
         builder.Entity<Bar>().ToTable("Pubs");
         builder.Entity<Bar>().HasKey(p => p.Id);
         builder.Entity<Bar>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
@@ -48,6 +53,16 @@ public class AppDbContext: DbContext
         builder.Entity<Bar>().Property(p => p.Ubicacion).IsRequired().HasMaxLength(700);;
         
         
+        // Tabla Support
+        builder.Entity<Support>().ToTable("Supports");
+        builder.Entity<Support>().HasKey(p => p.Id);
+        builder.Entity<Support>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Support>().Property(p => p.Description).IsRequired().HasMaxLength(255);
+        //builder.Entity<Support>().Property(p => p.UserName).IsRequired().HasMaxLength(30);
+        //builder.Entity<Support>().Property(p => p.Password).IsRequired().HasMaxLength(30);
+        
+        
+        // convert to snake case
         builder.UseSnakeCaseNamingConvention();
     }
 }

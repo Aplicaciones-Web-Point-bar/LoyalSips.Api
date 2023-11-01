@@ -29,11 +29,18 @@ builder.Services.AddDbContext<AppDbContext>(
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 // Dependency Injection Configuration
+//user
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+//bar - pub
 builder.Services.AddScoped<IBarRepository, BarRepository>();
 builder.Services.AddScoped<IBarService, BarService>();
+//unit of work
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+//support
+builder.Services.AddScoped<ISupportRepository, SupportRepository>();
+builder.Services.AddScoped<ISupportService, SupportService>();
+
 
 // AutoMapper Configuration
 builder.Services.AddAutoMapper(

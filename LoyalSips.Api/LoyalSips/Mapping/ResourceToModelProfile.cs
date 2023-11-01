@@ -11,5 +11,6 @@ public class ResourceToModelProfile : Profile
         //mapear igual a convertir categoryResource a Category, mediante el automapper
         CreateMap<SaveBarResource, Bar>();
         CreateMap<SaveUserResource, User>();
+        CreateMap<SaveSupportResource, Support>();
     }
 }

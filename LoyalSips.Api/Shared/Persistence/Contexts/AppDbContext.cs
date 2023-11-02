@@ -8,9 +8,10 @@ public class AppDbContext: DbContext
 {
     public DbSet<Bar> Pubs { get; set; }
     public DbSet<User> Users { get; set; }
-    
     public DbSet<Support> Supports { get; set; }
 
+    public DbSet<Point> Points { get; set; }
+    
     public AppDbContext(DbContextOptions options) : base(options)
     {
     }
@@ -60,6 +61,16 @@ public class AppDbContext: DbContext
         builder.Entity<Support>().Property(p => p.Description).IsRequired().HasMaxLength(255);
         //builder.Entity<Support>().Property(p => p.UserName).IsRequired().HasMaxLength(30);
         //builder.Entity<Support>().Property(p => p.Password).IsRequired().HasMaxLength(30);
+        
+        
+        //Tabla Point
+        builder.Entity<Point>().ToTable("Points");
+        builder.Entity<Point>().HasKey(p => p.Id);
+        builder.Entity<Point>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Point>().Property(p => p.Sale).IsRequired();
+        builder.Entity<Point>().Property(p => p.Total).IsRequired();
+        builder.Entity<Point>().Property(p => p.Description).IsRequired().HasMaxLength(350);
+        builder.Entity<Point>().Property(p => p.OwnerId).IsRequired();
         
         
         // convert to snake case

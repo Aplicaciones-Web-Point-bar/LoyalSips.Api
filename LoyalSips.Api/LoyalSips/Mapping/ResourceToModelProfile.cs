@@ -12,5 +12,6 @@ public class ResourceToModelProfile : Profile
         CreateMap<SaveBarResource, Bar>();
         CreateMap<SaveUserResource, User>();
         CreateMap<SaveSupportResource, Support>();
+        CreateMap<SavePointResource, Point>();
     }
 }

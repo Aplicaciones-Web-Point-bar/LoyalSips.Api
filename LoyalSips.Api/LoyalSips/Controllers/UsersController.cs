@@ -67,6 +67,10 @@ public class UsersController: ControllerBase
             UserResource>(result.Resource);
         return Ok(userResource);
     }
+    
+    
+    
+    
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAsync(int id)
     {

@@ -28,6 +28,8 @@ public class PubsController : ControllerBase
             IEnumerable<BarResource>>(pubs);
         return resources;
     }
+    
+    
     [HttpGet("{id}")]
     public async Task<BarResource> GetAllAsyncId(int id)
     {

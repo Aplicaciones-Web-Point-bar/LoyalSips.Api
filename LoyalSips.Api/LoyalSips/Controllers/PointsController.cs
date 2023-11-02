@@ -34,24 +34,4 @@ public class PointsController : ControllerBase
     }
     
     
-    
-    [HttpPost]
-    public async Task<IActionResult> PostAsync([FromBody] SavePointResource resource)
-    {
-        if (!ModelState.IsValid)
-            return BadRequest(ModelState.GetErrorMessages());
-        
-        var point = _mapper.Map<SavePointResource, Point>(resource);
-        var result = await _pointService.SaveAsync(point);
-        
-        if (!result.Success)
-            return BadRequest(result.Message);
-        
-        var pointResource = _mapper.Map<Point,
-            PointResource>(result.Resource);
-        
-        return Ok(pointResource);
-    }
-    
-    
 }

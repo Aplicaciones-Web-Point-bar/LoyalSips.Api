@@ -12,8 +12,11 @@ public class AppDbContext: DbContext
 
     public DbSet<Point> Points { get; set; }
     
+    public DbSet<RegistroPoint> RegistroPoints { get; set; }
+    
     public AppDbContext(DbContextOptions options) : base(options)
     {
+        
     }
     
     //aqui se definen los nombres de las columnas en la BD que seran de CategoryLL y TutorialLL respectivamente.
@@ -31,7 +34,6 @@ public class AppDbContext: DbContext
         builder.Entity<User>().Property(p => p.Password).IsRequired().HasMaxLength(30);
         
         //FK
-    
         
         
         
@@ -59,9 +61,7 @@ public class AppDbContext: DbContext
         builder.Entity<Support>().HasKey(p => p.Id);
         builder.Entity<Support>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Support>().Property(p => p.Description).IsRequired().HasMaxLength(255);
-        //builder.Entity<Support>().Property(p => p.UserName).IsRequired().HasMaxLength(30);
-        //builder.Entity<Support>().Property(p => p.Password).IsRequired().HasMaxLength(30);
-        
+
         
         //Tabla Point
         builder.Entity<Point>().ToTable("Points");
@@ -70,8 +70,14 @@ public class AppDbContext: DbContext
         builder.Entity<Point>().Property(p => p.Sale).IsRequired();
         builder.Entity<Point>().Property(p => p.Total).IsRequired();
         builder.Entity<Point>().Property(p => p.Description).IsRequired().HasMaxLength(350);
-        builder.Entity<Point>().Property(p => p.OwnerId).IsRequired();
+        //builder.Entity<Point>().Property(p => p.OwnerId).IsRequired();
         
+        
+        //Tabla registro de puntos
+        builder.Entity<RegistroPoint>().ToTable("RegistroPuntos");
+        builder.Entity<RegistroPoint>().HasKey(p => p.Id);
+        builder.Entity<RegistroPoint>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<RegistroPoint>().Property(p => p.puntosGanados).IsRequired();
         
         // convert to snake case
         builder.UseSnakeCaseNamingConvention();

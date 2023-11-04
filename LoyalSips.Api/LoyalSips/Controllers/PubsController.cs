@@ -45,10 +45,10 @@ public class PubsController : ControllerBase
         if (!ModelState.IsValid)
             return BadRequest(ModelState.GetErrorMessages());
         
-        var tutorial = _mapper.Map<SaveBarResource,
+        var bar = _mapper.Map<SaveBarResource,
             Bar>(resource);
         
-        var result = await _barService.SaveAsync(tutorial);
+        var result = await _barService.SaveAsync(bar);
         if (!result.Success)
             return BadRequest(result.Message);
         

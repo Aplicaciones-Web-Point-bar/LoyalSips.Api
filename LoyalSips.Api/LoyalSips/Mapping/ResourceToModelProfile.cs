@@ -13,5 +13,6 @@ public class ResourceToModelProfile : Profile
         CreateMap<SaveUserResource, User>();
         CreateMap<SaveSupportResource, Support>();
         CreateMap<SavePointResource, Point>();
+        CreateMap<SaveRegistroResource, RegistroPoint>();
     }
 }

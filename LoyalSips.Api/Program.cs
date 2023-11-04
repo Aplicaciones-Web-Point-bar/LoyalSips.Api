@@ -35,6 +35,11 @@ builder.Services.AddScoped<IUserService, UserService>();
 //bar - pub
 builder.Services.AddScoped<IBarRepository, BarRepository>();
 builder.Services.AddScoped<IBarService, BarService>();
+
+//registro 
+builder.Services.AddScoped<IRegistroPointRepository, RegistroRepository>();
+builder.Services.AddScoped<IRegistroService, RegistroService>();
+
 //unit of work
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 //support

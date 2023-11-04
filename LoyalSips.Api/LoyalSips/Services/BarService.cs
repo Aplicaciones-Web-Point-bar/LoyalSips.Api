@@ -105,7 +105,7 @@ public class BarService : IBarService
         catch (Exception e)
         {
             // Error Handling
-            return new BarResponse($"An error occurred while deletingthe bar: {e.Message}");
+            return new BarResponse($"An error occurred while deleting the bar: {e.Message}");
         }
     }
 }

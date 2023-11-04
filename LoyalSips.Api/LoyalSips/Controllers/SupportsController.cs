@@ -36,12 +36,15 @@ public class SupportsController : ControllerBase
     // add informacion es decir un añade un support
     [HttpPost]
     
-    public async Task<IActionResult> PostAsync([FromBody] SaveSupportResource resource)
+    public async Task<IActionResult> PostAsync([FromBody] 
+        SaveSupportResource resource)
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState.GetErrorMessages());
         
-        var support = _mapper.Map<SaveSupportResource, Support>(resource);
+        var support = _mapper.Map<SaveSupportResource,
+            Support>(resource);
+        
         var result = await _supportService.SaveAsync(support);
         
         if (!result.Success)

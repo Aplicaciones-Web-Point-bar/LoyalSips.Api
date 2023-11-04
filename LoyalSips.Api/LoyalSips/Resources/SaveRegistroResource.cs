@@ -2,11 +2,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LoyalSips.Api.LoyalSips.Resources;
 
-public class SaveSupportResource
+public class SaveRegistroResource
 {
     [Required]
-    [MaxLength(500)]
-    public string Description { get; set; }
+    public int puntosGanados { get; set; }
+    
+    [Required]
+    public int BarId { get; set; }
     
     [Required]
     public int UserId { get; set; }

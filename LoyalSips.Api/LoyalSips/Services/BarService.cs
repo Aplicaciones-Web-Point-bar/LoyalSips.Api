@@ -22,6 +22,10 @@ public class BarService : IBarService
     {
         return await _barRepository.ListAsync();
     }
+    public async Task<Bar> ListByIdAsync(int id)
+    {
+        return await _barRepository.FindByIdAsync(id);;
+    }
 
     public async Task<BarResponse> SaveAsync(Bar bar)
     {
@@ -66,12 +70,14 @@ public class BarService : IBarService
         existingBar.Name = bar.Name;
         existingBar.Description = bar.Description;
         existingBar.Logo = bar.Logo;
+        existingBar.Fotos = bar.Fotos;
+        existingBar.Puntaje = bar.Puntaje;
+        existingBar.Ubicacion = bar.Ubicacion;
         try
         {
             _barRepository.Update(existingBar);
             await _unitOfWork.CompleteAsync();
             return new BarResponse(existingBar);
-
         }
         catch (Exception e)
         {
@@ -99,7 +105,7 @@ public class BarService : IBarService
         catch (Exception e)
         {
             // Error Handling
-            return new BarResponse($"An error occurred while deletingthe bar: {e.Message}");
+            return new BarResponse($"An error occurred while deleting the bar: {e.Message}");
         }
     }
 }

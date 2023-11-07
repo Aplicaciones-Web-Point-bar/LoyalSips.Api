@@ -13,5 +13,8 @@ public class ModelToResourceProfile : Profile
         //mapear igual a convertir Category a categoryResource, mediante el automapper
         CreateMap<Bar, BarResource>();
         CreateMap<User, UserResource>();
+        CreateMap<Support, SupportResource>();
+        CreateMap<Point, PointResource>();
+        CreateMap<RegistroPoint, RegistroResource>();
     }
 }

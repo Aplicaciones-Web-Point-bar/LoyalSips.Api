@@ -29,6 +29,15 @@ public class PubsController : ControllerBase
         return resources;
     }
     
+    
+    [HttpGet("{id}")]
+    public async Task<BarResource> GetAllAsyncId(int id)
+    {
+        var pubs = await _barService.ListByIdAsync(id);
+        var resources = _mapper.Map<Bar,
+            BarResource>(pubs);
+        return resources;
+    }
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody]
         SaveBarResource resource)
@@ -36,10 +45,10 @@ public class PubsController : ControllerBase
         if (!ModelState.IsValid)
             return BadRequest(ModelState.GetErrorMessages());
         
-        var tutorial = _mapper.Map<SaveBarResource,
+        var bar = _mapper.Map<SaveBarResource,
             Bar>(resource);
         
-        var result = await _barService.SaveAsync(tutorial);
+        var result = await _barService.SaveAsync(bar);
         if (!result.Success)
             return BadRequest(result.Message);
         

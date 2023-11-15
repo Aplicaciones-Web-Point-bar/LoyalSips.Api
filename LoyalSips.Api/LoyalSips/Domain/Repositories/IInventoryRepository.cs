@@ -11,19 +11,20 @@ public interface IInventoryRepository
     Task AddAsync(Inventory inventory);
     
     // eliminar un producto del inventario
-    void Remove(Inventory inventory);
+    void RemoveProduct(Inventory inventory);
     
     // encontrar un producto por su id
     Task<Inventory> FindByIdAsync(int id);
     
-    // actualizar el precio de un producto del inventario
-    void Update(Inventory inventory);
-    
     // encontrar un producto por su nombre
     Task<Inventory> FindByInventoryNameAsync(string inventoryName);
     
+    // actualizar el precio de un producto del inventario
+    void UpdatePrice(Inventory inventory);
+    
+    
     // encontrar un producto por categoria
-    Task<IEnumerable<Inventory>> FindByInventoryCategoryAsync(string inventoryCategory);
+    Task<List<Inventory>> FindByInventoryCategoryAsync(string inventoryCategory);
     
     
 }

@@ -17,6 +17,9 @@ public class SaveInventoryResource
     public int Quantity { get; set; }
     
     [Required]
+    public int netContent { get; set; }
+    
+    [Required]
     public int Price { get; set; }
     
 }

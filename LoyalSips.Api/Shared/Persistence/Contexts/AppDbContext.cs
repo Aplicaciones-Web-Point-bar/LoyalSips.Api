@@ -14,6 +14,9 @@ public class AppDbContext: DbContext
     
     public DbSet<RegistroPoint> RegistroPoints { get; set; }
     
+    public DbSet<Inventory> Inventories { get; set; }
+    
+    
     public AppDbContext(DbContextOptions options) : base(options)
     {
         
@@ -78,6 +81,18 @@ public class AppDbContext: DbContext
         builder.Entity<RegistroPoint>().HasKey(p => p.Id);
         builder.Entity<RegistroPoint>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<RegistroPoint>().Property(p => p.puntosGanados).IsRequired();
+        
+        
+        // Tabla Inventario
+        builder.Entity<Inventory>().ToTable("Inventories");
+        builder.Entity<Inventory>().HasKey(p => p.Id);
+        builder.Entity<Inventory>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Inventory>().Property(p => p.Name).IsRequired().HasMaxLength(30);
+        builder.Entity<Inventory>().Property(p => p.Category).IsRequired().HasMaxLength(200);
+        builder.Entity<Inventory>().Property(p => p.Quantity).IsRequired().HasMaxLength(700);
+        builder.Entity<Inventory>().Property(p => p.netContent).IsRequired().HasMaxLength(700);
+        builder.Entity<Inventory>().Property(p => p.Price).IsRequired().HasMaxLength(700);
+        
         
         // convert to snake case
         builder.UseSnakeCaseNamingConvention();

@@ -1,9 +1,10 @@
 using LoyalSips.Api.LoyalSips.Domain.Models;
 using LoyalSips.Api.LoyalSips.Domain.Repositories;
 using LoyalSips.Api.Shared.Persistence.Contexts;
+using LoyalSips.API.Shared.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace LoyalSips.API.Shared.Persistence.Repositories;
+namespace LoyalSips.Api.LoyalSips.Persistence.Repositories;
 
 public class SupportRepository : BaseRepository, ISupportRepository
 {

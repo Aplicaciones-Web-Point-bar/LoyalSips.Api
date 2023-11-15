@@ -1,6 +1,7 @@
 using LoyalSips.Api.LoyalSips.Domain.Repositories;
 using LoyalSips.Api.LoyalSips.Domain.Services;
 using LoyalSips.Api.LoyalSips.Mapping;
+using LoyalSips.Api.LoyalSips.Persistence.Repositories;
 using LoyalSips.Api.LoyalSips.Services;
 using LoyalSips.Api.Shared.Persistence.Contexts;
 using LoyalSips.API.Shared.Persistence.Repositories;
@@ -42,6 +43,7 @@ builder.Services.AddScoped<IRegistroService, RegistroService>();
 
 //unit of work
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 //support
 builder.Services.AddScoped<ISupportRepository, SupportRepository>();
 builder.Services.AddScoped<ISupportService, SupportService>();

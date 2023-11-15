@@ -20,11 +20,15 @@ public interface IInventoryRepository
     Task<Inventory> FindByInventoryNameAsync(string inventoryName);
     
     // actualizar el precio de un producto del inventario
-    void UpdatePrice(Inventory inventory);
+    void Update(Inventory inventory);
     
     
     // encontrar un producto por categoria
     Task<List<Inventory>> FindByInventoryCategoryAsync(string inventoryCategory);
+    
+    // encontrar un producto por su contenido neto
+    Task<Inventory> FindByInventoryNetContentAsync(int inventoryNetContent);
+    
     
     
 }

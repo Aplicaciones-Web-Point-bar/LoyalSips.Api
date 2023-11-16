@@ -44,7 +44,7 @@ public class InventoryRepository : BaseRepository, IInventoryRepository
     }
 
     // update the price of a product in the inventory
-    public void UpdatePrice(Inventory inventory)
+    public void Update(Inventory inventory)
     {
         _context.Inventories.Update(inventory);
     }
@@ -54,4 +54,10 @@ public class InventoryRepository : BaseRepository, IInventoryRepository
     {
         return _context.Inventories.Where(p => p.Category == inventoryCategory).ToListAsync();
     }
+
+    public Task<Inventory> FindByInventoryNetContentAsync(int inventoryNetContent)
+    {
+        return _context.Inventories.FirstOrDefaultAsync(p => p.netContent == inventoryNetContent);
+    }
+    
 }

@@ -11,10 +11,10 @@ public interface IInventoryService
     // agregar un nuevo producto al inventario
     Task<InventoryResponse> SaveAsync(Inventory inventory);
     
+    // actualizar el precio de un producto del inventario
+    Task<InventoryResponse> UpdateAsync(int id, Inventory inventory);
+    
     // eliminar un producto del inventario
     Task<InventoryResponse> DeleteAsync(int id);
-    
-    // listar un producto por su nombre
-    Task<Inventory> ListByNameAsync(string inventoryName);
     
 }

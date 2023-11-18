@@ -32,7 +32,14 @@ public class InventoriesController : ControllerBase
         return resources;
     }
     
-    
+    [HttpGet("{id}")]
+
+    public async Task<InventoryResource> GetAllAsyncId(int id)
+    {
+        var inventories = await _inventoryService.ListByIdAsync(id);
+        var resources = _mapper.Map<Inventory, InventoryResource>(inventories);
+        return resources;
+    }
     
     /*agregamos metodo POST (lo que se muestra en el swagger)*/
     

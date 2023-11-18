@@ -22,12 +22,11 @@ public class BarService : IBarService
     }
     public async Task<Bar> ListByIdAsync(int id)
     {
-        return await _barRepository.FindByIdAsync(id);;
+        return await _barRepository.FindByIdAsync(id);
     }
 
     public async Task<BarResponse> SaveAsync(Bar bar)
     {
- 
         try
         {
             // Add bar

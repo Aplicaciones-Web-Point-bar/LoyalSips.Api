@@ -9,5 +9,9 @@ public class Inventory
     public int netContent { get; set; }
     public int Price { get; set; }
     
+    public int PointOfProduct { get; set; }
     
+    /* Para la conexion que r */
+    public int BarId { get; set; }
+    public Bar Bar { get; set; }
 }

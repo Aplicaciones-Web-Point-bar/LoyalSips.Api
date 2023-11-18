@@ -8,4 +8,6 @@ public class InventoryResource
     public int Quantity { get; set; }
     public int netContent { get; set; }
     public int Price { get; set; }
+    public int PointOfProduct { get; set; }
+    public BarResource Bar { get; set; }
 }

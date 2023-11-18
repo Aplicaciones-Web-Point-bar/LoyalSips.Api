@@ -92,6 +92,7 @@ public class AppDbContext: DbContext
         builder.Entity<Inventory>().Property(p => p.Quantity).IsRequired().HasMaxLength(700);
         builder.Entity<Inventory>().Property(p => p.netContent).IsRequired().HasMaxLength(700);
         builder.Entity<Inventory>().Property(p => p.Price).IsRequired().HasMaxLength(700);
+        builder.Entity<Inventory>().Property(p => p.PointOfProduct).IsRequired().HasMaxLength(700);
         
         
         // convert to snake case

@@ -1,4 +1,5 @@
 using LoyalSips.Api.LoyalSips.Domain.Models;
+using LoyalSips.Api.Security.Domain.Models;
 using LoyalSips.API.Shared.Extensions;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,7 +8,6 @@ namespace LoyalSips.Api.Shared.Persistence.Contexts;
 public class AppDbContext: DbContext
 {
     public DbSet<Bar> Pubs { get; set; }
-    public DbSet<User> Users { get; set; }
     public DbSet<Support> Supports { get; set; }
 
     public DbSet<Point> Points { get; set; }
@@ -16,7 +16,8 @@ public class AppDbContext: DbContext
     
     public DbSet<Inventory> Inventories { get; set; }
     
-    
+    public DbSet<User> Users { get; set; }
+
     public AppDbContext(DbContextOptions options) : base(options)
     {
         
@@ -26,20 +27,14 @@ public class AppDbContext: DbContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
-
-        // Tabla Usuarios o User
+        
+        // Constraints
         builder.Entity<User>().ToTable("Users");
         builder.Entity<User>().HasKey(p => p.Id);
         builder.Entity<User>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<User>().Property(p => p.FirstName).IsRequired().HasMaxLength(30);
-        builder.Entity<User>().Property(p => p.LastName).IsRequired().HasMaxLength(30);
-        builder.Entity<User>().Property(p => p.email).IsRequired().HasMaxLength(50);
-        builder.Entity<User>().Property(p => p.Password).IsRequired().HasMaxLength(30);
-        
-        //FK
-        
-        
-        
+        builder.Entity<User>().Property(p => p.Username).IsRequired().HasMaxLength(30);
+        builder.Entity<User>().Property(p => p.FirstName).IsRequired();
+        builder.Entity<User>().Property(p => p.LastName).IsRequired();
         // Tabla Bares o Pubs
         builder.Entity<Bar>().ToTable("Pubs");
         builder.Entity<Bar>().HasKey(p => p.Id);

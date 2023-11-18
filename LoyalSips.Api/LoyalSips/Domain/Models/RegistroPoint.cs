@@ -10,7 +10,5 @@ public class RegistroPoint
     
     public int UserId { get; set; }
     
-    public User User { get; set; }
-    
     public Bar Bar  { get; set; }
 }

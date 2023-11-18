@@ -15,7 +15,6 @@ public class SupportRepository : BaseRepository, ISupportRepository
     public async Task<IEnumerable<Support>> ListAsync()
     {
         return await _context.Supports
-            .Include(p=>p.User)
             .ToListAsync();
     }
 
@@ -29,7 +28,6 @@ public class SupportRepository : BaseRepository, ISupportRepository
     {
         // de la base de datos en la entidad soporte se busca un soporte por su id
         return await _context.Supports
-            .Include(p=>p.User)
             .FirstOrDefaultAsync(p=>p.Id==id);
     }
 

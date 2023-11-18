@@ -17,4 +17,5 @@ public interface IInventoryService
     // eliminar un producto del inventario
     Task<InventoryResponse> DeleteAsync(int id);
     
+    Task<Inventory> ListByIdAsync(int id);
 }

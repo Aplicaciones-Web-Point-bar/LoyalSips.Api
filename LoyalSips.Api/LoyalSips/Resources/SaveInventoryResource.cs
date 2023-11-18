@@ -22,4 +22,7 @@ public class SaveInventoryResource
     [Required]
     public int Price { get; set; }
     
+    [Required]
+    public int BarId { get; set; }
+    
 }

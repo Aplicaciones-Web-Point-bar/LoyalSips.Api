@@ -8,14 +8,12 @@ namespace LoyalSips.Api.LoyalSips.Services;
 public class RegistroService : IRegistroService
 {
     private readonly IRegistroPointRepository _iRegistroPointRepository;
-    private readonly IUserRepository _userRepository;
     private readonly IBarRepository _barRepository;
     private readonly IUnitOfWork _unitOfWork;
 
-    public RegistroService(IRegistroPointRepository iRegistroPointRepository, IUserRepository userRepository, IBarRepository barRepository, IUnitOfWork unitOfWork)
+    public RegistroService(IRegistroPointRepository iRegistroPointRepository, IBarRepository barRepository, IUnitOfWork unitOfWork)
     {
         _iRegistroPointRepository = iRegistroPointRepository;
-        _userRepository = userRepository;
         _barRepository = barRepository;
         _unitOfWork = unitOfWork;
     }

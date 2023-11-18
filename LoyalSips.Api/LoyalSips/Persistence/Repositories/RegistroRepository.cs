@@ -16,7 +16,6 @@ public class RegistroRepository : BaseRepository, IRegistroPointRepository
     {
         return await _context.RegistroPoints
             .Include(p=>p.Bar)
-            .Include(p=>p.User)
             .ToListAsync();
     }
 
@@ -29,7 +28,6 @@ public class RegistroRepository : BaseRepository, IRegistroPointRepository
     {
         return await _context.RegistroPoints
             .Include(p => p.Bar)
-            .Include(p => p.User)
             .FirstOrDefaultAsync(p => p.Id == id);
     }
 }

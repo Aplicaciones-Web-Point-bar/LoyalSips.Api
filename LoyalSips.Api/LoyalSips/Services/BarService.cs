@@ -7,13 +7,11 @@ namespace LoyalSips.Api.LoyalSips.Services;
 
 public class BarService : IBarService
 {
-    private readonly IUserRepository _userRepository;
     private readonly IBarRepository _barRepository;
     private readonly IUnitOfWork _unitOfWork;
     
-    public BarService(IUserRepository userRepository,IBarRepository barRepository,IUnitOfWork unitOfWork)
+    public BarService(IBarRepository barRepository,IUnitOfWork unitOfWork)
     {
-        _userRepository = userRepository;
         _barRepository = barRepository;
         _unitOfWork = unitOfWork;
     }
@@ -29,10 +27,7 @@ public class BarService : IBarService
 
     public async Task<BarResponse> SaveAsync(Bar bar)
     {
-        // Validate CategoryId
-        var existingUser = await _userRepository.FindByIdAsync(bar.OwnerId);
-        if (existingUser == null)
-            return new BarResponse($"Invalid Owner 2{bar.OwnerId}" );
+ 
         try
         {
             // Add bar
@@ -60,11 +55,7 @@ public class BarService : IBarService
         if (existingBar == null)
             return new BarResponse("bar not found.");
         
-        // Validate OwnerId
-        var existingUser = await
-            _userRepository.FindByIdAsync(bar.OwnerId);
-        if (existingUser == null)
-            return new BarResponse("Invalid Owner");
+
 
         // Modify Fields
         existingBar.Name = bar.Name;

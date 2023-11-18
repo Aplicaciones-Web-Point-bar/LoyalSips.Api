@@ -14,5 +14,4 @@ public class Bar
     public string Ubicacion { get; set; }
     
     public int OwnerId { get; set; }
-    public User Owner { get; set; }
 }

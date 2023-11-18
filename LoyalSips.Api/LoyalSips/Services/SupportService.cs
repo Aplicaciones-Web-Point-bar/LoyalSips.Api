@@ -7,13 +7,11 @@ namespace LoyalSips.Api.LoyalSips.Services;
 
 public class SupportService :ISupportService
 {
-    private readonly IUserRepository _userRepository;
     private readonly ISupportRepository _supportRepository;
     private readonly IUnitOfWork _unitOfWork;
     
-    public SupportService(IUserRepository userRepository,ISupportRepository supportRepository,IUnitOfWork unitOfWork)
+    public SupportService(ISupportRepository supportRepository,IUnitOfWork unitOfWork)
     {
-        _userRepository = userRepository;
         _supportRepository = supportRepository;
         _unitOfWork = unitOfWork;
     }
@@ -25,9 +23,6 @@ public class SupportService :ISupportService
 
     public async Task<SupportResponse> SaveAsync(Support support)
     {
-        var existingUser = await _userRepository.FindByIdAsync(support.UserId);
-        if (existingUser == null)
-            return new SupportResponse($"Invalid Owner 2{support.UserId}" );
         
         try
         {

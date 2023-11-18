@@ -3,6 +3,10 @@ using LoyalSips.Api.LoyalSips.Domain.Services;
 using LoyalSips.Api.LoyalSips.Mapping;
 using LoyalSips.Api.LoyalSips.Persistence.Repositories;
 using LoyalSips.Api.LoyalSips.Services;
+using LoyalSips.Api.Security.Authorization.Handlers.Implementations;
+using LoyalSips.Api.Security.Authorization.Handlers.Interfaces;
+using LoyalSips.Api.Security.Domain.Repositories;
+using LoyalSips.Api.Security.Persistence.Repositories;
 using LoyalSips.Api.Shared.Persistence.Contexts;
 using LoyalSips.API.Shared.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -26,13 +30,15 @@ builder.Services.AddDbContext<AppDbContext>(
         .EnableSensitiveDataLogging()
         .EnableDetailedErrors());
 
+
+// Security Injection Configuration
+builder.Services.AddScoped<IJwtHandler, JwtHandler>();
+builder.Services.AddScoped<IUserRepositoryy, UserRepositoryy>();
 // Add lowercase routes
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 // Dependency Injection Configuration
 //user
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IUserService, UserService>();
 //bar - pub
 builder.Services.AddScoped<IBarRepository, BarRepository>();
 builder.Services.AddScoped<IBarService, BarService>();

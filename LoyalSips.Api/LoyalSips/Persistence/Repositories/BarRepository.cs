@@ -15,7 +15,6 @@ public class BarRepository : BaseRepository, IBarRepository
     public async Task<IEnumerable<Bar>> ListAsync()
     {
         return await _context.Pubs
-            .Include(p=>p.Owner)
             .ToListAsync();
     }
 
@@ -27,7 +26,6 @@ public class BarRepository : BaseRepository, IBarRepository
     public async Task<Bar> FindByIdAsync(int barId)
     {
         return await _context.Pubs
-            .Include(p => p.Owner)
             .FirstOrDefaultAsync(p => p.Id == barId);
     }
 

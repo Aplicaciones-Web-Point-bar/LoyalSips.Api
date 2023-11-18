@@ -30,5 +30,4 @@ public interface IInventoryRepository
     Task<Inventory> FindByInventoryNetContentAsync(int inventoryNetContent);
     
     
-    
 }

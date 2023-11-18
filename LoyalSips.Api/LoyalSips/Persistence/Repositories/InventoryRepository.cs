@@ -33,7 +33,10 @@ public class InventoryRepository : BaseRepository, IInventoryRepository
     // find a product by its id
     public async Task<Inventory> FindByIdAsync(int id)
     {
-        return await _context.Inventories.FindAsync(id);
+        return await _context.Inventories
+            .Include(p=>p.Bar)
+            .FirstOrDefaultAsync(p => p.Id == id);
+        
     }
     
     // find a product by its name

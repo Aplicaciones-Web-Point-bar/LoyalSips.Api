@@ -16,7 +16,7 @@ public class InventoriesController : ControllerBase
     
     private readonly IInventoryService _inventoryService;
     private readonly IMapper _mapper;
-    
+    //establece las dependencias necesarias para que el controlador realice operaciones relacionadas con inventarios
     public InventoriesController(IInventoryService inventoryService, IMapper mapper)
     {
         _inventoryService = inventoryService;

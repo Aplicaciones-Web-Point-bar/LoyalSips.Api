@@ -13,7 +13,7 @@ public class PubsController : ControllerBase
 {
     private readonly IBarService _barService;
     private readonly IMapper _mapper;
-
+// define un constructor para un controlador
     public PubsController(IBarService barService, IMapper mapper)
     {
         _barService = barService;
